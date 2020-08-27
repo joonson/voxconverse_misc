@@ -12,6 +12,5 @@ new = new[0].split()
 for nn in new:
 	if nn in original:
 		pdb.set_trace()
-		
 
 print('done, no overlap')

@@ -1,10 +1,21 @@
 import pdb, os, shutil
 
-with open('mapping.txt','r') as f:
+with open('../spottheconversation/mapping_test.txt','r') as f:
 	lines = f.readlines()
 
 maps = {}
 
-for line in lines:
-	shutil.copyfile('voxconv_dev_14_spk_voxconv/%s.rttm'%(line.strip().split(',')[0]),'original/%s.rttm'%(line.strip().split(',')[1]))
+linesplit = [[x.split(',')[0],x.split(',')[1].strip()] for x in lines]
+
+with open('all.rttm','w') as h:
+	for lidx, line in enumerate(linesplit):
+		with open('results/%s.rttm'%(line[0])) as f:
+			flines = f.readlines()
+
+		with open('original_test/%s.rttm'%(line[1]),'w') as g:
+			for fline in flines:
+				g.write('%s'%(fline.replace(' '+line[0]+' ',' '+line[1]+' ')))
+				h.write('%s'%(fline.replace(' '+line[0]+' ',' '+line[1]+' ')))
+
+
 

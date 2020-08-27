@@ -1,5 +1,10 @@
 # Other files
+annotations/
+backup/
+*.tar.gz
 *.model
+*.rttm
+*.json
 *.wav
 *.mp4
 *.pcm
